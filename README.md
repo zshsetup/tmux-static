@@ -13,7 +13,7 @@ works even on systems without a terminfo database. The system database is still 
 `/etc/terminfo`, `/lib/terminfo`, `/usr/share/terminfo`, and `/usr/lib/terminfo`, or from
 `$TERMINFO`, `$TERMINFO_DIRS`, and `~/.terminfo`.
 
-The build has no utf8proc and no systemd support.
+The build has no utf8proc, no jemalloc, and no systemd support.
 
 ## Prerequisites
 

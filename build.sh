@@ -170,7 +170,7 @@ echo ">>> tmux"
 (
   cd tmux
   [ -f configure ] || ./autogen.sh >/dev/null 2>&1
-  ./configure --prefix=/usr/local --disable-utf8proc \
+  ./configure --prefix=/usr/local --disable-utf8proc --disable-jemalloc \
     CFLAGS="-Os" CPPFLAGS="-I$PREFIX/include -I$PREFIX/include/ncursesw" \
     LDFLAGS="$LDSTATIC -L$PREFIX/lib -s" \
     LIBEVENT_CORE_CFLAGS="-I$PREFIX/include" LIBEVENT_CORE_LIBS="-L$PREFIX/lib -levent_core" \
