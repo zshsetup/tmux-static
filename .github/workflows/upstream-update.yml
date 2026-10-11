@@ -7,7 +7,7 @@ env:
   NAME: tmux
   DIR: tmux
   URL: https://github.com/tmux/tmux.git
-  PATTERN: '^[0-9]+\.[0-9]+[a-z]?$'
+  PATTERN: '^3\.7c$'
   RELEASE_SED: ''
 jobs:
   update:
