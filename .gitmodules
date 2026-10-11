@@ -1,0 +1,12 @@
+[submodule "vendor/tmux"]
+    path = vendor/tmux
+    url = https://github.com/tmux/tmux.git
+    shallow = true
+[submodule "vendor/libevent"]
+    path = vendor/libevent
+    url = https://github.com/libevent/libevent.git
+    shallow = true
+[submodule "vendor/ncurses"]
+    path = vendor/ncurses
+    url = https://github.com/ThomasDickey/ncurses-snapshots.git
+    shallow = true
