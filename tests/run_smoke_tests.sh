@@ -49,6 +49,10 @@ done
 case "$out" in *pmg-tmux*) ;; *) fail "pane output: $out" ;; esac
 pass "runs a session and captures a pane"
 
+# jemalloc is linked in when the binary has its statistics symbols
+grep -a -q 'je_' "$BIN" || grep -a -q 'jemalloc' "$BIN" || fail "jemalloc is not linked in"
+pass "uses jemalloc"
+
 if [ "$(uname -s)" = Linux ] && ! LC_ALL=C grep -a -q 'ld-musl' "$BIN"; then
   max="$(LC_ALL=C grep -aoh 'GLIBC_2\.[0-9]*' "$BIN" | sort -uV | tail -n 1)" || true
   if [ -n "$max" ]; then

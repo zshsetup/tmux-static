@@ -16,6 +16,11 @@ libevent
   Copyright (c) Niels Provos, Nick Mathewson, and contributors
   License: BSD-3-Clause (see LICENSE in the sources)
 
+jemalloc
+  https://jemalloc.net/
+  Copyright (c) Jason Evans, Facebook, Inc., and contributors
+  License: BSD-2-Clause (see COPYING in the sources)
+
 ncurses
   https://invisible-island.net/ncurses/
   Copyright (c) Thomas E. Dickey and Free Software Foundation, Inc.

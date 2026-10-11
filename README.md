@@ -1,6 +1,6 @@
 # tmux-static
 
-Portable builds of [tmux](https://github.com/tmux/tmux), the terminal multiplexer, with libevent and ncurses linked in statically, built with [zig](https://ziglang.org) as the C toolchain.
+Portable builds of [tmux](https://github.com/tmux/tmux), the terminal multiplexer, with libevent, jemalloc, and ncurses linked in statically, built with [zig](https://ziglang.org) as the C toolchain.
 
 - Linux glibc: only glibc is linked dynamically, and only symbols up to glibc 2.17, so the
   binaries run on anything from CentOS 7 onwards
@@ -13,7 +13,7 @@ works even on systems without a terminfo database. The system database is still 
 `/etc/terminfo`, `/lib/terminfo`, `/usr/share/terminfo`, and `/usr/lib/terminfo`, or from
 `$TERMINFO`, `$TERMINFO_DIRS`, and `~/.terminfo`.
 
-The build has no utf8proc, no jemalloc, and no systemd support.
+The build uses jemalloc, as upstream does on macOS, and has no utf8proc and no systemd support.
 
 ## Prerequisites
 
@@ -68,9 +68,10 @@ submodules under `vendor/`. Credit goes to their respective authors:
 
 - [tmux](https://github.com/tmux/tmux) by Nicholas Marriott and contributors
 - [libevent](https://libevent.org/) by Niels Provos, Nick Mathewson, and contributors
+- [jemalloc](https://jemalloc.net/) by Jason Evans, Facebook, Inc., and contributors
 - [ncurses](https://invisible-island.net/ncurses/) by Thomas E. Dickey and Free Software Foundation, Inc.
 
 ## License
 
 MIT for the code in this repository. See `NOTICE` for the licenses of the upstream projects and the
-resulting binaries, which are ISC (tmux), BSD-3-Clause (libevent), and X11-MIT (ncurses).
+resulting binaries, which are ISC (tmux), BSD-3-Clause (libevent), BSD-2-Clause (jemalloc), and X11-MIT (ncurses).

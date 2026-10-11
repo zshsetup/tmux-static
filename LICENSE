@@ -1,6 +1,6 @@
 This license applies only to the code in this repository (build.sh, tests/, README.md, and
 related files). It does not apply to the upstream projects built by build.sh or to the
-tmux binaries built from them, which carry their own licenses (ISC (tmux), BSD-3-Clause (libevent), and X11-MIT (ncurses)).
+tmux binaries built from them, which carry their own licenses (ISC (tmux), BSD-3-Clause (libevent), BSD-2-Clause (jemalloc), and X11-MIT (ncurses)).
 See NOTICE.
 
 MIT License

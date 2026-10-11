@@ -99,6 +99,7 @@ prepare() {
 
 prepare tmux
 prepare libevent
+prepare jemalloc
 prepare ncurses
 
 HOST="$WORK/host"
@@ -166,15 +167,27 @@ echo ">>> libevent"
   "$MAKE" install >/dev/null
 )
 
+echo ">>> jemalloc"
+(
+  cd jemalloc
+  [ -f configure ] || autoconf
+  [ -f Makefile ] && "$MAKE" distclean >/dev/null 2>&1 || true
+  ./configure --prefix="$PREFIX" --disable-shared --enable-static --disable-cxx --disable-doc \
+    CFLAGS="-Os -fPIC" >/dev/null
+  "$MAKE" -j"$JOBS" build_lib_static >/dev/null
+  "$MAKE" install_lib_static install_include >/dev/null
+)
+
 echo ">>> tmux"
 (
   cd tmux
   [ -f configure ] || ./autogen.sh >/dev/null 2>&1
-  ./configure --prefix=/usr/local --disable-utf8proc --disable-jemalloc \
+  ./configure --prefix=/usr/local --disable-utf8proc --enable-jemalloc \
     CFLAGS="-Os" CPPFLAGS="-I$PREFIX/include -I$PREFIX/include/ncursesw" \
     LDFLAGS="$LDSTATIC -L$PREFIX/lib -s" \
     LIBEVENT_CORE_CFLAGS="-I$PREFIX/include" LIBEVENT_CORE_LIBS="-L$PREFIX/lib -levent_core" \
     LIBEVENT_CFLAGS="-I$PREFIX/include" LIBEVENT_LIBS="-L$PREFIX/lib -levent" \
+    JEMALLOC_CFLAGS="-I$PREFIX/include" JEMALLOC_LIBS="-L$PREFIX/lib -ljemalloc -lpthread" \
     LIBTINFOW_CFLAGS="-I$PREFIX/include -I$PREFIX/include/ncursesw" \
     LIBTINFOW_LIBS="-L$PREFIX/lib -lncursesw -ltinfow" \
     LIBTINFO_CFLAGS="-I$PREFIX/include" LIBTINFO_LIBS="-L$PREFIX/lib -lncursesw -ltinfow" >/dev/null

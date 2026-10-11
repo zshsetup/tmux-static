@@ -10,3 +10,7 @@
     path = vendor/ncurses
     url = https://github.com/ThomasDickey/ncurses-snapshots.git
     shallow = true
+[submodule "vendor/jemalloc"]
+    path = vendor/jemalloc
+    url = https://github.com/jemalloc/jemalloc.git
+    shallow = true
