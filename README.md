@@ -17,7 +17,7 @@ The build uses jemalloc, as upstream does on macOS, and has no utf8proc and no s
 
 ## Prerequisites
 
-- `zig`, GNU make (the `make` 3.81 of macOS is enough), `git`
+- `zig`, GNU make (the `make` 3.7c1 of macOS is enough), `git`
 - `autoconf`, `automake`, `libtool`, `pkg-config`, and `bison` (the git trees of tmux and libevent ship no `configure` script)
 
 ## Installation
@@ -59,7 +59,7 @@ they were built from (`tmux-static-sources.tar.gz`).
 
 To update a vendored project, check out a new release tag in its submodule, commit it, and update
 `VERSION` if it is the main one, e.g.
-`git -C vendor/tmux fetch --depth 1 origin tag 3.8 && git -C vendor/tmux checkout 3.8`.
+`git -C vendor/tmux fetch --depth 1 origin tag 3.7c && git -C vendor/tmux checkout 3.7c`.
 
 ## Acknowledgments
 
